@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Music Player</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .container{
+          background-image: url('./bg.jpg');
+      }
+  </style>
+  </head>
+  <body class="container">
+    <div class="min-h-screen flex items-center justify-center p-4">
+      <!-- Changed max-w-2xl to max-w-xl for narrower width -->
+      <div class="w-full max-w-xl bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg shadow-lg overflow-hidden">
+        <div class="flex flex-col md:flex-row">
+          <!-- Album Art - Increased height -->
+          <div class="w-full md:w-2/5">
+            <img
+              class="w-full h-56 object-cover"
+              src="avatar.jpg"
+              alt="Album Art"
+            />
+          </div>
+
+          <!-- Player Controls -->
+          <div class="w-full md:w-3/5 p-4 md:p-8">
+            <!-- Title and Like Button -->
+            <div class="flex justify-between items-center">
+              <div>
+                <h3 class="text-xl md:text-2xl text-white font-medium">Nhi 🐷🐷</h3>
+                <p class="text-sm text-gray-200 mt-1">Ghost Stories</p>
+              </div>
+              <button class="text-pink-200 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="flex justify-between items-center mt-8 md:mt-12">
+              <button class="text-white hover:text-pink-200 transition-colors">
+                <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M6.59 12.83L4.4 15c-.58.58-1.59 1-2.4 1H0v-2h2c.29 0 .8-.2 1-.41l2.17-2.18 1.42 1.42zM16 4V1l4 4-4 4V6h-2c-.29 0-.8.2-1 .41l-2.17 2.18L9.4 7.17 11.6 5c.58-.58 1.59-1 2.41-1h2zm0 10v-3l4 4-4 4v-3h-2c-.82 0-1.83-.42-2.41-1l-8.6-8.59C2.8 6.21 2.3 6 2 6H0V4h2c.82 0 1.83.42 2.41 1l8.6 8.59c.2.2.7.41.99.41h2z" />
+                </svg>
+              </button>
+
+              <button class="text-white hover:text-pink-200 transition-colors">
+                <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M4 5h3v10H4V5zm12 0v10l-9-5 9-5z" />
+                </svg>
+              </button>
+
+               <!-- Updated Play Button -->
+               <button id="btn-play" class="w-12 h-12 md:w-14 md:h-14 bg-white rounded-full shadow-lg hover:bg-pink-100 transition-colors flex items-center justify-center">
+                <i class="fa-solid fa-play text-purple-500 text-base md:text-lg play-icon-center"></i>
+              </button>
+
+              <!-- Updated Pause Button -->
+              <button id="btn-pause" class="hidden w-12 h-12 md:w-14 md:h-14 bg-white rounded-full shadow-lg hover:bg-pink-100 transition-colors flex items-center justify-center">
+                <svg class="w-5 h-5 md:w-6 md:h-6 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M5 4h3v12H5V4zm7 0h3v12h-3V4z" />
+                </svg>
+              </button>
+
+              <button class="text-white hover:text-pink-200 transition-colors">
+                <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M13 5h3v10h-3V5zM4 5l9 5-9 5V5z" />
+                </svg>
+              </button>
+
+              <button class="text-white hover:text-pink-200 transition-colors">
+                <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M5 4a2 2 0 0 0-2 2v6H0l4 4 4-4H5V6h7l2-2H5zm10 4h-3l4-4 4 4h-3v6a2 2 0 0 1-2 2H6l2-2h7V8z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="mt-8 md:mt-12">
+              <div class="flex justify-between text-sm text-white mb-2">
+                <span>0:40</span>
+                <span>4:20</span>
+              </div>
+              <div class="h-1 bg-white/30 rounded-full">
+                <div class="w-1/5 h-full bg-white rounded-full relative">
+                  <span class="absolute -right-2 -bottom-1.5 w-4 h-4 bg-white rounded-full shadow-lg"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <audio src="https://raw.githubusercontent.com/toanf2103/card/main/song.mp3" id="myAudio" controls></audio>
+
+    <script>
+      const playBtn = document.getElementById("btn-play");
+      const pauseBtn = document.getElementById("btn-pause");
+      const audioElement = document.getElementById("myAudio");
+      const currentTime = 52;
+
+      window.addEventListener("load", function () {
+        audioElement.currentTime = currentTime;
+        audioElement.play().catch((error) => {
+          console.log("Unable to autoplay:", error);
+        });
+      });
+
+      playBtn.addEventListener("click", function () {
+        audioElement.play().catch((error) => {
+          console.log("Unable to play:", error);
+        });
+        playBtn.classList.add("hidden");
+        pauseBtn.classList.remove("hidden");
+      });
+
+      pauseBtn.addEventListener("click", function () {
+        audioElement.currentTime = currentTime;
+        audioElement.pause();
+        pauseBtn.classList.add("hidden");
+        playBtn.classList.remove("hidden");
+      });
+    </script>
+  </body>
+</html>
